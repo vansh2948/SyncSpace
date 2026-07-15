@@ -1,14 +1,28 @@
 import { Router } from "express";
 
-import { registerUser } from "../controllers/authController";
+import {
+  registerUser,
+  loginUser,
+  getCurrentUser,
+} from "../controllers/authController";
+
+import { protect } from "../middleware/authMiddleware";
 
 const router = Router();
 
 /**
- * @route POST /api/auth/register
- * @desc Register a new user
- * @access Public
+ * Register
  */
 router.post("/register", registerUser);
+
+/**
+ * Login
+ */
+router.post("/login", loginUser);
+
+/**
+ * Current Logged-in User
+ */
+router.get("/me", protect, getCurrentUser);
 
 export default router;
