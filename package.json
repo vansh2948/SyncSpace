@@ -1,0 +1,27 @@
+{
+  "name": "syncspace",
+  "version": "1.0.0",
+  "description": "Real-Time Collaborative Whiteboard & Code Editor",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vansh2948/SyncSpace.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vansh2948/SyncSpace/issues"
+  },
+  "homepage": "https://github.com/vansh2948/SyncSpace#readme",
+  "devDependencies": {
+    "concurrently": "^10.0.3",
+    "prettier": "^3.9.5"
+  }
+}
