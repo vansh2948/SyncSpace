@@ -1,6 +1,8 @@
 import { Server, Socket } from "socket.io";
 import http from "http";
 
+import { registerRoomEvents } from "./room.socket";
+
 let io: Server;
 
 export const initializeSocket = (server: http.Server): Server => {
@@ -18,6 +20,8 @@ export const initializeSocket = (server: http.Server): Server => {
       message: "Welcome to SyncSpace!",
       socketId: socket.id,
     });
+
+    registerRoomEvents(io, socket);
 
     socket.on("disconnect", () => {
       console.log("🔴 User Disconnected:", socket.id);

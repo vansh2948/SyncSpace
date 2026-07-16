@@ -1,6 +1,7 @@
 import { Router } from "express";
 
 import authRoutes from "./authRoutes";
+import roomRoutes from "./roomRoutes";
 
 const router = Router();
 
@@ -20,5 +21,10 @@ router.get("/", (_req, res) => {
  * Authentication Routes
  */
 router.use("/api/auth", authRoutes);
+
+/**
+ * Room Routes
+ */
+router.use("/api/rooms", roomRoutes);
 
 export default router;
