@@ -2,16 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import LandingPage from "./pages/LandingPage";
 import AuthPage from "./pages/auth/AuthPage";
-
-function DashboardPage() {
-  return (
-    <div className="min-h-screen bg-black flex items-center justify-center">
-      <h1 className="text-5xl font-bold text-green-400">
-        Dashboard
-      </h1>
-    </div>
-  );
-}
+import DashboardPage from "./pages/dashboard/DashboardPage";
 
 function NotFoundPage() {
   return (
@@ -27,6 +18,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+
         {/* Landing */}
         <Route
           path="/"
@@ -50,6 +42,7 @@ function App() {
           path="*"
           element={<NotFoundPage />}
         />
+
       </Routes>
     </BrowserRouter>
   );
