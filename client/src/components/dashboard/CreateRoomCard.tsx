@@ -1,7 +1,22 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Plus } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import roomService from "../../services/roomService";
 
 const CreateRoomCard = () => {
+  const navigate = useNavigate();
+
+  const handleCreateRoom = async () => {
+    try {
+      const response = await roomService.createRoom();
+
+      navigate(`/room/${response.room.roomId}`);
+    } catch (error) {
+      console.error(error);
+      alert("Failed to create room.");
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -38,16 +53,10 @@ const CreateRoomCard = () => {
             justify-center
           "
         >
-          <Plus
-            size={30}
-            className="text-cyan-300"
-          />
+          <Plus size={30} className="text-cyan-300" />
         </div>
 
-        <ArrowUpRight
-          size={24}
-          className="text-cyan-300"
-        />
+        <ArrowUpRight size={24} className="text-cyan-300" />
       </div>
 
       <h2 className="text-3xl font-bold text-white">
@@ -60,6 +69,7 @@ const CreateRoomCard = () => {
       </p>
 
       <button
+        onClick={handleCreateRoom}
         className="
           mt-10
           w-full

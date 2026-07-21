@@ -1,9 +1,28 @@
 import { motion } from "framer-motion";
 import { ArrowRight, LogIn } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import roomService from "../../services/roomService";
 
 const JoinRoomCard = () => {
   const [roomId, setRoomId] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleJoinRoom = async () => {
+    if (!roomId.trim()) {
+      return;
+    }
+
+    try {
+      await roomService.joinRoom(roomId);
+
+      navigate(`/room/${roomId.toUpperCase()}`);
+    } catch (error) {
+      console.error(error);
+      alert("Room not found.");
+    }
+  };
 
   return (
     <motion.div
@@ -41,16 +60,10 @@ const JoinRoomCard = () => {
             justify-center
           "
         >
-          <LogIn
-            size={30}
-            className="text-blue-300"
-          />
+          <LogIn size={30} className="text-blue-300" />
         </div>
 
-        <ArrowRight
-          size={24}
-          className="text-blue-300"
-        />
+        <ArrowRight size={24} className="text-blue-300" />
       </div>
 
       <h2 className="text-3xl font-bold text-white">
@@ -68,8 +81,8 @@ const JoinRoomCard = () => {
 
         <input
           value={roomId}
-          onChange={(e) => setRoomId(e.target.value)}
-          placeholder="Example: 7F4A-29CD"
+          onChange={(e) => setRoomId(e.target.value.toUpperCase())}
+          placeholder="Example: ABCD1234"
           className="
             w-full
             rounded-2xl
@@ -91,6 +104,7 @@ const JoinRoomCard = () => {
       </div>
 
       <button
+        onClick={handleJoinRoom}
         className="
           mt-8
           w-full

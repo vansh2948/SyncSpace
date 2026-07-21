@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import AuthPage from "./pages/auth/AuthPage";
 import DashboardPage from "./pages/dashboard/DashboardPage";
+import RoomPage from "./pages/room/RoomPage";
 
 function NotFoundPage() {
   return (
@@ -19,25 +20,26 @@ function App() {
     <BrowserRouter>
       <Routes>
 
-        {/* Landing */}
         <Route
           path="/"
           element={<LandingPage />}
         />
 
-        {/* Authentication */}
         <Route
           path="/auth"
           element={<AuthPage />}
         />
 
-        {/* Dashboard */}
         <Route
           path="/dashboard"
           element={<DashboardPage />}
         />
 
-        {/* 404 */}
+        <Route
+          path="/room/:roomId"
+          element={<RoomPage />}
+        />
+
         <Route
           path="*"
           element={<NotFoundPage />}

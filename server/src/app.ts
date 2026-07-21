@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 
 import router from "./routes";
+import roomRoutes from "./routes/roomRoutes";
+
 import notFound from "./middleware/notFound";
 import errorHandler from "./middleware/errorHandler";
 
@@ -20,6 +22,8 @@ app.use(express.json());
 // ===========================
 
 app.use("/", router);
+
+app.use("/api/rooms", roomRoutes);
 
 // ===========================
 // 404 Middleware
